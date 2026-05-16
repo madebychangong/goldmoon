@@ -1,0 +1,2132 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>골드문 디아블로4 시세표</title>
+    <meta name="description" content="골드문 디아블로4 시세표와 장바구니 상담 주문서" />
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #fff8f8;
+        --panel: #ffffff;
+        --panel-2: #fff1f3;
+        --paper: #ffffff;
+        --gold: #d7a329;
+        --gold-2: #b47912;
+        --gold-3: #ffe091;
+        --pink: #ff6f85;
+        --pink-soft: #fff0f4;
+        --line: rgba(19, 17, 15, 0.12);
+        --line-strong: rgba(215, 163, 41, 0.5);
+        --text: #17120f;
+        --muted: #685f5a;
+        --green: #13875f;
+        --red: #ff475d;
+        --blue: #2563eb;
+        --shadow: 0 14px 38px rgba(54, 36, 24, 0.1);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+        background:
+          radial-gradient(circle at 11% 8%, rgba(255, 71, 93, 0.13), transparent 18rem),
+          radial-gradient(circle at 86% 18%, rgba(215, 163, 41, 0.14), transparent 19rem),
+          linear-gradient(180deg, #fffdfd 0%, #fff7f8 36%, #ffffff 100%);
+        color: var(--text);
+        font-family:
+          Pretendard,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+      }
+
+      button,
+      input,
+      textarea {
+        font: inherit;
+      }
+
+      button {
+        border: 0;
+      }
+
+      .page {
+        width: min(100%, 1120px);
+        margin: 0 auto;
+        padding: 14px 14px 128px;
+      }
+
+      .hero {
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .brand,
+      .stats,
+      .notice,
+      .price-notice,
+      .toolbar,
+      .price-card,
+      .drawer,
+      .cart-bar {
+        border: 1px solid var(--line);
+        background: rgba(255, 253, 248, 0.92);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(18px);
+      }
+
+      .brand {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 7px 16px;
+        align-items: end;
+        overflow: hidden;
+        border: 2px solid rgba(23, 18, 15, 0.76);
+        border-radius: 16px;
+        padding: 14px 16px 13px;
+        background:
+          linear-gradient(180deg, #ffffff 0%, #fffafb 100%);
+        box-shadow: 0 0 0 6px rgba(255, 240, 243, 0.64), 0 14px 32px rgba(54, 36, 24, 0.1);
+      }
+
+      .brand::after {
+        content: "";
+        display: none;
+      }
+
+      .brand::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 7px;
+        background: linear-gradient(90deg, #ff475d, #ffb0bd, #f5c84e, #ff475d);
+      }
+
+      .brand-top {
+        position: relative;
+        z-index: 1;
+        grid-column: 1 / -1;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .header-stats {
+        display: inline-flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        align-items: center;
+        justify-content: flex-end;
+        margin-left: auto;
+      }
+
+      .mini-stat {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        border: 1px solid rgba(23, 18, 15, 0.12);
+        border-radius: 999px;
+        padding: 6px 10px;
+        background: #ffffff;
+        color: var(--text);
+        font-size: 0.82rem;
+        font-weight: 900;
+        box-shadow: 2px 2px 0 rgba(23, 18, 15, 0.06);
+      }
+
+      .mini-stat span {
+        color: var(--red);
+        font-size: 0.72rem;
+        font-weight: 1000;
+      }
+
+      .mini-stat b {
+        font-size: 1rem;
+      }
+
+      .mark {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        border: 2px solid rgba(23, 18, 15, 0.18);
+        border-radius: 999px;
+        padding: 6px 10px;
+        background: #ffffff;
+        color: var(--gold-2);
+        font-size: 0.8rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+      }
+
+      .mark-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 999px;
+        background: var(--gold);
+        box-shadow: 0 0 0 5px rgba(197, 141, 37, 0.12), 0 0 22px rgba(197, 141, 37, 0.3);
+      }
+
+      h1 {
+        position: relative;
+        z-index: 1;
+        margin: 6px 0 0;
+        color: var(--text);
+        font-size: clamp(2.35rem, 5.4vw, 4.25rem);
+        line-height: 0.88;
+        letter-spacing: 0;
+      }
+
+      .brand-copy {
+        position: relative;
+        z-index: 1;
+        max-width: 620px;
+        margin: 0;
+        color: #463d38;
+        font-size: clamp(0.95rem, 1.9vw, 1.12rem);
+        font-weight: 800;
+        line-height: 1.35;
+      }
+
+      .brand-actions {
+        position: relative;
+        z-index: 1;
+        grid-column: 2;
+        grid-row: 2 / span 2;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 7px;
+        margin-top: 0;
+      }
+
+      .btn,
+      .chip-button,
+      .cart-button,
+      .icon-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border-radius: 10px;
+        cursor: pointer;
+        text-decoration: none;
+        transition:
+          transform 140ms ease,
+          box-shadow 140ms ease,
+          background 140ms ease,
+          border-color 140ms ease;
+        user-select: none;
+      }
+
+      .btn {
+        min-height: 40px;
+        padding: 9px 13px;
+        border: 2px solid rgba(23, 18, 15, 0.16);
+        background: #ffffff;
+        color: var(--text);
+        font-weight: 900;
+        box-shadow: 3px 3px 0 rgba(23, 18, 15, 0.08);
+      }
+
+      .btn.primary {
+        border-color: rgba(215, 163, 41, 0.72);
+        background: linear-gradient(135deg, #ffe08c, #d7a329);
+        color: #1b1308;
+        box-shadow: 0 12px 30px rgba(216, 166, 66, 0.22);
+      }
+
+      .btn.kakao {
+        border-color: rgba(255, 71, 93, 0.48);
+        background: linear-gradient(135deg, #ff6f85, #ff3f5b);
+        color: #ffffff;
+        box-shadow: 0 12px 28px rgba(255, 71, 93, 0.2);
+      }
+
+      .btn.channel {
+        border-color: rgba(255, 71, 93, 0.34);
+        background: #fff7f8;
+        color: var(--red);
+      }
+
+      .btn:hover,
+      .chip-button:hover,
+      .cart-button:hover,
+      .icon-button:hover {
+        transform: translateY(-2px);
+      }
+
+      .btn:active,
+      .chip-button:active,
+      .cart-button:active,
+      .icon-button:active {
+        transform: translateY(1px);
+      }
+
+      .stats {
+        display: grid;
+        align-content: stretch;
+        gap: 8px;
+        border: 2px solid rgba(23, 18, 15, 0.08);
+        border-radius: 12px;
+        padding: 10px;
+      }
+
+      .stat {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        border: 1px solid rgba(19, 17, 15, 0.1);
+        border-radius: 12px;
+        min-height: 58px;
+        padding: 11px 12px;
+        background: #ffffff;
+      }
+
+      .stat-icon {
+        display: inline-flex;
+        width: fit-content;
+        margin: 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        color: var(--red);
+        font-size: 0.74rem;
+        font-weight: 1000;
+        line-height: 1;
+        box-shadow: none;
+      }
+
+      .stat strong {
+        display: block;
+        margin: 0;
+        color: var(--text);
+        font-size: 1.4rem;
+        line-height: 1.1;
+      }
+
+      .notice {
+        overflow: hidden;
+        border: 2px solid rgba(23, 18, 15, 0.68);
+        border-radius: 14px;
+        margin-bottom: 14px;
+        background:
+          linear-gradient(90deg, #fff5f8 0%, #ffffff 28%, #fff3bf 52%, #ffffff 74%, #ffe8ee 100%);
+        box-shadow: 0 8px 22px rgba(54, 36, 24, 0.08);
+      }
+
+      .ticker {
+        display: inline-flex;
+        min-width: 200%;
+        gap: 0;
+        padding: 11px 0;
+        padding-left: 28px;
+        color: #17120f;
+        font-size: 1rem;
+        font-weight: 900;
+        white-space: nowrap;
+        text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.92);
+        animation: ticker 34s linear infinite;
+      }
+
+      .ticker span {
+        padding-right: 44px;
+      }
+
+      @keyframes ticker {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      .toolbar {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 10px;
+        align-items: center;
+        border-radius: 14px;
+        margin-bottom: 14px;
+        padding: 12px;
+      }
+
+      .price-notice {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        border-radius: 14px;
+        margin-bottom: 14px;
+        padding: 12px;
+        background:
+          linear-gradient(135deg, rgba(255, 71, 93, 0.08), transparent 62%),
+          #ffffff;
+      }
+
+      .price-notice:empty {
+        display: none;
+      }
+
+      .notice-card {
+        border: 1px solid rgba(255, 71, 93, 0.22);
+        border-left: 5px solid var(--red);
+        border-radius: 12px;
+        padding: 14px;
+        background: #fff9fa;
+      }
+
+      .notice-card h2 {
+        margin: 0;
+        color: var(--red);
+        font-size: 1.08rem;
+        line-height: 1.25;
+      }
+
+      .notice-card p {
+        margin: 8px 0 0;
+        color: #3d3632;
+        font-size: 0.95rem;
+        font-weight: 800;
+        line-height: 1.48;
+      }
+
+      .search {
+        width: 100%;
+        min-height: 42px;
+        border: 1px solid rgba(19, 17, 15, 0.16);
+        border-radius: 10px;
+        padding: 0 14px;
+        outline: none;
+        background: #ffffff;
+        color: var(--text);
+      }
+
+      .search:focus {
+        border-color: rgba(242, 210, 123, 0.72);
+        box-shadow: 0 0 0 4px rgba(216, 166, 66, 0.12);
+      }
+
+      .filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .chip-button {
+        min-height: 36px;
+        border: 1px solid rgba(19, 17, 15, 0.13);
+        padding: 8px 11px;
+        background: #ffffff;
+        color: var(--muted);
+        font-size: 0.9rem;
+        font-weight: 900;
+      }
+
+      .chip-button.active {
+        border-color: rgba(255, 71, 93, 0.55);
+        background: #fff0f3;
+        color: var(--red);
+      }
+
+      .price-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .price-card {
+        overflow: hidden;
+        border-radius: 14px;
+        border-color: rgba(19, 17, 15, 0.14);
+      }
+
+      .price-head {
+        display: block;
+        border-bottom: 1px solid rgba(19, 17, 15, 0.12);
+        padding: 12px;
+        background:
+          linear-gradient(135deg, #fff0f3 0%, #ffffff 66%, #fff8e5 100%),
+          #ffffff;
+      }
+
+      .price-titleline {
+        display: grid;
+        grid-template-columns: minmax(8rem, auto) minmax(0, 1fr);
+        gap: 10px;
+        align-items: center;
+        min-height: 32px;
+      }
+
+      .price-head h2 {
+        min-width: 0;
+        margin: 0;
+        color: var(--text);
+        font-size: clamp(1.02rem, 2vw, 1.18rem);
+        line-height: 1.25;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .price-head p {
+        min-width: 0;
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.82rem;
+        font-weight: 700;
+        line-height: 1.25;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .tag {
+        border: 1px solid rgba(197, 141, 37, 0.42);
+        border-radius: 999px;
+        padding: 6px 9px;
+        background: #fff2c4;
+        color: #3a2a09;
+        font-size: 0.78rem;
+        font-weight: 900;
+        white-space: nowrap;
+      }
+
+      .items {
+        display: grid;
+        gap: 6px;
+        padding: 9px;
+      }
+
+      .item {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 10px;
+        align-items: center;
+        justify-items: stretch;
+        border: 1px solid rgba(19, 17, 15, 0.12);
+        border-radius: 10px;
+        min-height: 46px;
+        padding: 8px 8px 8px 11px;
+        background: #ffffff;
+        color: var(--text);
+        cursor: pointer;
+        text-align: left;
+        transition:
+          transform 140ms ease,
+          border-color 140ms ease,
+          background 140ms ease;
+      }
+
+      .item:hover {
+        transform: translateY(-1px);
+        border-color: rgba(215, 163, 41, 0.55);
+        background: #fff8e5;
+      }
+
+      .item.selected {
+        border-color: rgba(255, 71, 93, 0.68);
+        background: #fff0f3;
+      }
+
+      .item-label {
+        min-width: 0;
+        color: var(--text);
+        font-size: 1rem;
+        font-weight: 900;
+        line-height: 1.24;
+      }
+
+      .item-price {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 92px;
+        border-radius: 999px;
+        padding: 6px 10px;
+        border: 1px solid rgba(215, 163, 41, 0.5);
+        background: #fff2c4;
+        color: #17120f;
+        font-size: 0.94rem;
+        font-weight: 1000;
+        white-space: nowrap;
+      }
+
+      .note-row {
+        border: 1px dashed rgba(197, 141, 37, 0.42);
+        border-radius: 10px;
+        padding: 8px 10px;
+        background: #fff8e5;
+        color: #4a4039;
+        font-size: 0.86rem;
+        font-weight: 800;
+        line-height: 1.45;
+      }
+
+      .cart-bar {
+        position: fixed;
+        left: 50%;
+        bottom: 14px;
+        z-index: 40;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto auto;
+        gap: 10px;
+        align-items: center;
+        width: min(calc(100% - 20px), 920px);
+        border-radius: 16px;
+        padding: 10px;
+        transform: translateX(-50%);
+        background: rgba(255, 255, 255, 0.96);
+      }
+
+      .cart-summary {
+        min-width: 0;
+        padding-left: 8px;
+      }
+
+      .cart-summary strong {
+        display: block;
+        color: var(--text);
+        font-size: 1.05rem;
+      }
+
+      .cart-summary span {
+        display: block;
+        margin-top: 2px;
+        color: var(--muted);
+        font-size: 0.86rem;
+        font-weight: 800;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .cart-button {
+        min-height: 46px;
+        border: 1px solid rgba(121, 82, 25, 0.24);
+        padding: 12px 14px;
+        background: #ffffff;
+        color: var(--text);
+        font-weight: 1000;
+      }
+
+      .cart-button.gold {
+        border-color: rgba(242, 210, 123, 0.8);
+        background: linear-gradient(135deg, #f4d67f, #c78b2d);
+        color: #1b1308;
+      }
+
+      .backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 60;
+        display: none;
+        background: rgba(0, 0, 0, 0.62);
+        backdrop-filter: blur(6px);
+      }
+
+      .backdrop.open {
+        display: block;
+      }
+
+      .drawer {
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 70;
+        display: grid;
+        grid-template-rows: auto minmax(0, 1fr) auto;
+        width: min(100%, 430px);
+        height: 100%;
+        border-width: 0 0 0 1px;
+        border-radius: 0;
+        transform: translateX(105%);
+        transition: transform 180ms ease;
+        background: #fffdf8;
+      }
+
+      .drawer.open {
+        transform: translateX(0);
+      }
+
+      .drawer-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        border-bottom: 1px solid var(--line);
+        padding: 18px;
+      }
+
+      .drawer-head h2 {
+        margin: 0;
+        color: var(--text);
+        font-size: 1.25rem;
+      }
+
+      .icon-button {
+        width: 40px;
+        height: 40px;
+        border: 1px solid rgba(121, 82, 25, 0.18);
+        background: #ffffff;
+        color: var(--text);
+        font-size: 1.2rem;
+        font-weight: 900;
+      }
+
+      .drawer-body {
+        overflow: auto;
+        padding: 14px 18px 18px;
+      }
+
+      .cart-empty {
+        border: 1px dashed rgba(121, 82, 25, 0.32);
+        border-radius: 14px;
+        padding: 30px 18px;
+        color: var(--muted);
+        text-align: center;
+        font-weight: 800;
+        line-height: 1.55;
+      }
+
+      .cart-line {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 12px;
+        align-items: center;
+        border: 1px solid rgba(121, 82, 25, 0.16);
+        border-radius: 12px;
+        margin-bottom: 9px;
+        padding: 12px;
+        background: #ffffff;
+      }
+
+      .cart-line strong {
+        display: block;
+        color: var(--text);
+        line-height: 1.3;
+      }
+
+      .cart-line span {
+        display: block;
+        margin-top: 4px;
+        color: var(--muted);
+        font-size: 0.9rem;
+        font-weight: 800;
+      }
+
+      .qty {
+        display: grid;
+        grid-template-columns: 34px 38px 34px;
+        align-items: center;
+        border: 1px solid rgba(121, 82, 25, 0.22);
+        border-radius: 999px;
+        overflow: hidden;
+      }
+
+      .qty button {
+        height: 34px;
+        background: #fff3d4;
+        color: var(--text);
+        cursor: pointer;
+        font-size: 1.1rem;
+        font-weight: 900;
+      }
+
+      .qty b {
+        color: var(--text);
+        text-align: center;
+      }
+
+      .form {
+        display: grid;
+        gap: 9px;
+        margin-top: 16px;
+      }
+
+      .form label {
+        display: grid;
+        gap: 6px;
+        color: var(--muted);
+        font-size: 0.86rem;
+        font-weight: 900;
+      }
+
+      .form input,
+      .form textarea {
+        width: 100%;
+        border: 1px solid rgba(121, 82, 25, 0.2);
+        border-radius: 10px;
+        padding: 11px 12px;
+        outline: none;
+        background: #ffffff;
+        color: var(--text);
+      }
+
+      .form textarea {
+        min-height: 72px;
+        resize: vertical;
+      }
+
+      .drawer-foot {
+        display: grid;
+        gap: 8px;
+        border-top: 1px solid var(--line);
+        padding: 14px 18px 18px;
+      }
+
+      .total {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--muted);
+        font-weight: 900;
+      }
+
+      .total strong {
+        color: var(--red);
+        font-size: 1.3rem;
+      }
+
+      .toast {
+        position: fixed;
+        left: 50%;
+        top: 18px;
+        z-index: 100;
+        width: min(calc(100% - 24px), 420px);
+        border: 1px solid rgba(110, 231, 183, 0.34);
+        border-radius: 14px;
+        padding: 13px 15px;
+        background: rgba(15, 39, 31, 0.96);
+        color: #dbfff1;
+        box-shadow: var(--shadow);
+        text-align: center;
+        font-weight: 900;
+        transform: translate(-50%, -180%);
+        transition: transform 180ms ease;
+      }
+
+      .toast.show {
+        transform: translate(-50%, 0);
+      }
+
+      .modal-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 90;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+        background: rgba(23, 18, 15, 0.58);
+        backdrop-filter: blur(8px);
+      }
+
+      .modal-backdrop.open {
+        display: flex;
+      }
+
+      .modal {
+        width: min(100%, 840px);
+        max-height: 90vh;
+        overflow: auto;
+        border: 2px solid rgba(23, 18, 15, 0.78);
+        border-radius: 18px;
+        padding: 18px;
+        background: #fffdf8;
+        box-shadow: 0 20px 60px rgba(23, 18, 15, 0.25);
+      }
+
+      .modal h2 {
+        margin: 0;
+        color: var(--text);
+        font-size: 1.35rem;
+      }
+
+      .modal p {
+        margin: 8px 0 14px;
+        color: var(--muted);
+        font-weight: 800;
+        line-height: 1.5;
+      }
+
+      .modal input,
+      .modal textarea {
+        width: 100%;
+        border: 1px solid rgba(19, 17, 15, 0.18);
+        border-radius: 12px;
+        padding: 12px;
+        background: #ffffff;
+        color: var(--text);
+        outline: none;
+      }
+
+      .modal input:focus,
+      .modal textarea:focus {
+        border-color: rgba(215, 163, 41, 0.65);
+        box-shadow: 0 0 0 4px rgba(216, 166, 66, 0.12);
+      }
+
+      .modal textarea {
+        min-height: 46vh;
+        resize: vertical;
+        line-height: 1.55;
+        white-space: pre;
+      }
+
+      .modal-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .modal-button {
+        min-height: 42px;
+        border: 1px solid rgba(19, 17, 15, 0.15);
+        border-radius: 10px;
+        padding: 10px 14px;
+        background: #ffffff;
+        color: var(--text);
+        font-weight: 900;
+        cursor: pointer;
+      }
+
+      .modal-button.primary {
+        border-color: rgba(215, 163, 41, 0.72);
+        background: linear-gradient(135deg, #ffe08c, #d7a329);
+      }
+
+      .modal-button.danger {
+        border-color: rgba(255, 71, 93, 0.38);
+        background: #fff0f3;
+        color: var(--red);
+      }
+
+      .admin-panel {
+        display: none;
+      }
+
+      .admin-panel.open {
+        display: block;
+      }
+
+      .hint {
+        min-height: 1.2em;
+        margin-top: 10px;
+        color: var(--red);
+        font-size: 0.92rem;
+        font-weight: 900;
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      @media (max-width: 860px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+
+        .stats {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .stat {
+          text-align: center;
+        }
+
+        .stat-icon {
+          margin: 0;
+        }
+
+        .toolbar {
+          grid-template-columns: 1fr;
+        }
+
+        .price-notice {
+          grid-template-columns: 1fr;
+        }
+
+        .price-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 560px) {
+        .page {
+          padding: 8px 9px 122px;
+        }
+
+        .brand {
+          grid-template-columns: 1fr;
+          gap: 8px;
+          padding: 14px;
+        }
+
+        .brand-actions {
+          grid-column: 1;
+          grid-row: auto;
+          justify-content: stretch;
+        }
+
+        .brand-actions .btn {
+          flex: 1 1 30%;
+          min-width: 0;
+          padding: 9px 8px;
+          font-size: 0.92rem;
+        }
+
+        .price-titleline {
+          grid-template-columns: 1fr;
+          gap: 3px;
+          min-height: 0;
+        }
+
+        .price-head h2 {
+          white-space: normal;
+          overflow: visible;
+          text-overflow: clip;
+        }
+
+        .price-head p {
+          white-space: normal;
+          overflow: visible;
+          text-overflow: clip;
+        }
+
+        .price-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .item {
+          grid-template-columns: minmax(0, 1fr) auto;
+          min-height: 46px;
+          padding: 8px 8px 8px 10px;
+        }
+
+        .item-label {
+          font-size: 0.98rem;
+        }
+
+        .item-price {
+          justify-content: center;
+          min-width: 88px;
+          font-size: 0.92rem;
+          width: fit-content;
+        }
+
+        .cart-bar {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .cart-summary {
+          grid-column: 1 / -1;
+        }
+
+        .cart-button {
+          padding: 11px 10px;
+          font-size: 0.92rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <div class="brand">
+          <div class="brand-top">
+            <span class="mark"><span class="mark-dot"></span> DIABLO IV PRICE BOARD</span>
+            <div class="header-stats" aria-label="상담 통계">
+              <span class="mini-stat"><span>LIVE</span><b id="activeChats">5</b>명</span>
+              <span class="mini-stat"><span>TODAY</span><b id="todayViews">128</b>회</span>
+            </div>
+            <span class="tag" id="todayLabel">오늘 시세</span>
+          </div>
+          <h1>GoldMoon Shop</h1>
+          <p class="brand-copy">
+            '최저가의 기준' '신속정확한 거래전문샵'
+          </p>
+          <div class="brand-actions">
+            <button class="btn primary" type="button" data-open-cart>장바구니 보기</button>
+            <a class="btn kakao" href="https://open.kakao.com/o/sICyD4ti" target="_blank" rel="noopener noreferrer">카톡문의</a>
+            <button class="btn channel" type="button" data-open-channel>채널톡문의</button>
+          </div>
+        </div>
+
+      </section>
+
+      <div class="notice" aria-label="주요 상품">
+        <div class="ticker">
+          <span>GoldMoon Shop · 최저가의 기준 · 신속정확한 거래전문샵 · 골드 · 신화병기공물 · 보석 · 룬세트 · 레벨링 대행</span>
+          <span>GoldMoon Shop · 최저가의 기준 · 신속정확한 거래전문샵 · 골드 · 신화병기공물 · 보석 · 룬세트 · 레벨링 대행</span>
+        </div>
+      </div>
+
+      <section class="toolbar" aria-label="가격표 필터">
+        <input id="searchInput" class="search" type="search" placeholder="상품명이나 수량으로 검색" />
+        <div id="filters" class="filters"></div>
+      </section>
+
+      <section id="priceNotice" class="price-notice" aria-label="가격표 안내"></section>
+
+      <section id="priceGrid" class="price-grid" aria-label="가격표"></section>
+    </main>
+
+    <div class="cart-bar" aria-label="장바구니 요약">
+      <div class="cart-summary">
+        <strong id="cartTitle">장바구니가 비어있어요</strong>
+        <span id="cartSubtitle">상품을 누르면 상담 내용이 자동으로 준비됩니다.</span>
+      </div>
+      <button class="cart-button" type="button" data-open-cart>장바구니</button>
+      <button class="cart-button gold" type="button" data-copy-open>상담 시작</button>
+    </div>
+
+    <div id="backdrop" class="backdrop"></div>
+
+    <aside id="cartDrawer" class="drawer" aria-label="장바구니">
+      <div class="drawer-head">
+        <h2>장바구니</h2>
+        <button id="closeDrawer" class="icon-button" type="button" aria-label="닫기">×</button>
+      </div>
+      <div class="drawer-body">
+        <div id="cartLines"></div>
+        <div class="form">
+          <label>
+            배틀태그
+            <input id="battleTag" type="text" placeholder="예: Goldmoon#1234" />
+          </label>
+          <label>
+            입금자명
+            <input id="depositor" type="text" placeholder="입금자명을 입력하세요" />
+          </label>
+          <label>
+            요청사항
+            <textarea id="memo" placeholder="원하는 시간, 품목 요청, 전달 방식 등을 적어주세요."></textarea>
+          </label>
+        </div>
+      </div>
+      <div class="drawer-foot">
+        <div class="total">
+          <span>총 주문 금액</span>
+          <strong id="cartTotal">0원</strong>
+        </div>
+        <button class="cart-button gold" type="button" data-copy-open>상담 시작</button>
+        <button id="clearCart" class="cart-button" type="button">전체 비우기</button>
+      </div>
+    </aside>
+
+    <div id="toast" class="toast">상담 내용이 준비됐어요. 채팅창에 붙여넣어 전송해주세요.</div>
+
+    <div id="adminModal" class="modal-backdrop">
+      <section class="modal" aria-label="가격표 편집">
+        <h2>가격표 편집</h2>
+        <p>가격표 원문을 붙여넣고 저장하면 방문자 화면에 바로 반영됩니다.</p>
+
+        <div id="passwordPanel">
+          <input id="passwordInput" type="password" placeholder="관리자 비밀번호" autocomplete="current-password" />
+          <div class="modal-actions">
+            <button id="loginButton" class="modal-button primary" type="button">열기</button>
+            <button id="closeAdminButton" class="modal-button" type="button">닫기</button>
+          </div>
+          <div id="loginHint" class="hint"></div>
+        </div>
+
+        <div id="adminPanel" class="admin-panel">
+          <textarea id="priceEditor" spellcheck="false"></textarea>
+          <div class="modal-actions">
+            <button id="previewButton" class="modal-button" type="button">미리보기</button>
+            <button id="savePriceButton" class="modal-button primary" type="button">저장</button>
+            <button id="copyPriceButton" class="modal-button" type="button">전체 복사</button>
+            <button id="resetPriceButton" class="modal-button danger" type="button">기본 가격표</button>
+            <button id="closeEditorButton" class="modal-button" type="button">닫기</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script type="text/plain" id="rawPriceText">
+★모든장비 문의★
+▶세트부적 및 전설문장◀
+삼중의 / 도가니 / 호라존 / 메피스 / 이름없는자 등등 모든 부적세트
+
+★개별 문의 주세요★
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+★★지하도시 신화병기공물
+대기시간 : 스피드 / (신화템1~6개 랜덤드랍)
+
+1회 - 4,000원
+5회 - 16,000원
+10회 - 27,000원
+20회 - 48,000원
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+▶잊힌영혼 (바닥거래)
+1000개 = 7,000원
+3000개 = 18,000원
+5000개 = 30,000원
+▶옵두버스
+1만개 = 5,000원
+3만개 = 12,000원
+5만개 = 18,000원
+10만개 = 34,000원
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+▶금화 (골드 소지한도 999억)
+200억 = 8,000원
+300억 = 10,000원
+500억 = 16,000원
+900억 = 28,000원
+▶벨리알 (배신자껍데기)
+50개 = 15,000원
+100개 = 24,000원
+200개 = 44,000원
+300개 = 64,000원
+▶강철 / 극피
+500개 = 10,000원
+1000개 = 18,000원
+▶하급 소굴열쇠
+100개 = 6,000원
+200개 =11,000원
+300개 =16,000원
+500개 = 27,000원
+1000개 = 45,000원
+▶상급 소굴열쇠
+100개 = 12,000원
+200개 = 20,000원
+500개 = 45,000원
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+▶분광경
+☆--쿨레 조율의 분광경
+100개 = 10,000원
+300개 = 24,000원
+☆--엔트로피/공격적인/숙련자의/다채로운 등등
+300개당 = 10,000원
+▶선지자 십자가 (메피스토비축고)
+10개 = 12,000원
+20개 = 23,000원
+30개 = 35,000원
+40개 = 45,000원
+50개 = 55,000원
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+▶룬세트 (1세트 = 6+6+6)
+수의셋 (바크6 녹6 모니6)
+샤코셋 (에옴6 라크6 세흐6)
+영벌셋 (자6 쿠에6 가르6)
+별반셋 (오움6 와트6 쳄6)
+한아비셋 (탐6 모트6 약스6)
+티리엘셋 (욤6 나구6 치크6)
+셀리그셋 (벡스6주울6크라이6)
+
+룬 1세트 = 5,000원
+룬 3세트 = 9,000원
+룬 5세트 = 13,000원
+룬 10세트 = 19,000원
+
+※ 기타 개별룬 문의주세요
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+▶웅장한보석
+10개 = 5,000원
+20개 = 8,000원
+50개 = 15,000원
+100개 = 25,000원
+200개 = 50,000원
+★온전한 호라드림 보석
+1개 = 7,000원
+5개 = 30,000원
+10개 = 55,000원
+20개 = 100,000원
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+▶대행or레벨링 서비스
+70레벨 만렙 버스 = 8,000원
+70레벨 + 정복자 50 = 15,000원
+70레벨 + 정복자 100 = 25,000원
+70레벨 + 정복자 150 = 65,000원
+70레벨 + 정복자 200 = 120,000원
+나락100단 1시간당 = 10,000원
+고행12 메피스토 (재료 키 포함) = 5회 = 18,000 / 10회 = 32,000원 / 20회 = 54,000원
+    </script>
+
+    <script>
+      const CHANNEL_PLUGIN_KEY = "";
+      const KAKAO_CHAT_URL = "https://open.kakao.com/o/sICyD4ti";
+
+      if (CHANNEL_PLUGIN_KEY) {
+        (function () {
+          const w = window;
+          if (w.ChannelIO) return;
+          const ch = function () {
+            ch.c(arguments);
+          };
+          ch.q = [];
+          ch.c = function (args) {
+            ch.q.push(args);
+          };
+          w.ChannelIO = ch;
+          function load() {
+            if (w.ChannelIOInitialized) return;
+            w.ChannelIOInitialized = true;
+            const script = document.createElement("script");
+            script.async = true;
+            script.src = "https://cdn.channel.io/plugin/ch-plugin-web.js";
+            document.head.appendChild(script);
+          }
+          if (document.readyState === "complete") load();
+          else {
+            window.addEventListener("DOMContentLoaded", load);
+            window.addEventListener("load", load);
+          }
+        })();
+
+        window.ChannelIO("boot", {
+          pluginKey: CHANNEL_PLUGIN_KEY
+        });
+      }
+
+      const priceSections = [
+        {
+          category: "추천",
+          title: "신화 장난꾸러기",
+          subtitle: "바로출발 대기X · 신화템 1개 + 벼락불 1개 드랍",
+          badge: "BEST",
+          items: [
+            ["1회", "4,000원"],
+            ["5회", "16,000원"],
+            ["10회", "28,000원"],
+            ["20회", "55,000원"]
+          ]
+        },
+        {
+          category: "추천",
+          title: "보물틈새",
+          subtitle: "니스, 분광경, 옵두, 각종 재료 드랍",
+          badge: "FAST",
+          items: [
+            ["1회", "3,000원"],
+            ["5회", "9,000원"],
+            ["10회", "14,000원"],
+            ["20회", "26,000원"]
+          ]
+        },
+        {
+          category: "추천",
+          title: "신화병기 공물 버스",
+          subtitle: "판당 신화템 1~4개 랜덤 드랍",
+          badge: "HOT",
+          items: [
+            ["1회", "7,000원"],
+            ["5회", "25,000원"],
+            ["10회", "48,000원"]
+          ]
+        },
+        {
+          category: "재화",
+          title: "골드",
+          subtitle: "소지한도 999억 기준",
+          badge: "GOLD",
+          items: [
+            ["100억", "3,000원"],
+            ["200억", "4,000원"],
+            ["300억", "5,000원"],
+            ["500억", "8,000원"],
+            ["900억", "12,000원"]
+          ]
+        },
+        {
+          category: "재료",
+          title: "껍데기",
+          subtitle: "대량 구매 상담 가능",
+          badge: "MAT",
+          items: [
+            ["100개", "8,000원"],
+            ["200개", "15,000원"],
+            ["300개", "24,000원"],
+            ["500개", "35,000원"],
+            ["1000개", "50,000원"]
+          ]
+        },
+        {
+          category: "재료",
+          title: "소굴열쇠",
+          subtitle: "하급/상급 동일 가격",
+          badge: "KEY",
+          items: [
+            ["하급 100개", "3,000원"],
+            ["하급 200개", "5,000원"],
+            ["하급 500개", "9,000원"],
+            ["상급 100개", "3,000원"],
+            ["상급 500개", "9,000원"],
+            ["상급 1000개", "14,000원"]
+          ]
+        },
+        {
+          category: "보석",
+          title: "웅장한 보석",
+          subtitle: "종류 선택 가능",
+          badge: "GEM",
+          items: [
+            ["10개", "5,000원"],
+            ["20개", "8,000원"],
+            ["50개", "14,000원"],
+            ["100개", "22,000원"],
+            ["200개", "40,000원"]
+          ]
+        },
+        {
+          category: "보석",
+          title: "호라드림 보석",
+          subtitle: "호라드림/온전한 호라드림 선택 가능",
+          badge: "RARE",
+          items: [
+            ["호라드림 1개", "3,000원"],
+            ["호라드림 10개", "16,000원"],
+            ["온전한 1개", "5,000원"],
+            ["온전한 10개", "35,000원"],
+            ["온전한 20개", "65,000원"]
+          ]
+        },
+        {
+          category: "세트",
+          title: "각종 룬세트",
+          subtitle: "샤코/별반/한아비/셀리그/영벌/수의 등 섞어 가능",
+          badge: "SET",
+          items: [
+            ["1set", "5,000원"],
+            ["3set", "9,000원"],
+            ["5set", "13,000원"],
+            ["10set", "20,000원"],
+            ["개별룬 1개당", "1,000원"]
+          ]
+        },
+        {
+          category: "버스",
+          title: "각종 우버보스 버스",
+          subtitle: "벨리알, 듀리엘, 바르샨, 야수, 안다, 지르",
+          badge: "BOSS",
+          items: [
+            ["10판", "12,000원"],
+            ["20판", "20,000원"],
+            ["고행10 메피스토 1회", "8,000원"],
+            ["고행10 메피스토 10회", "65,000원"]
+          ]
+        },
+        {
+          category: "대행",
+          title: "렙업 정복자 버스",
+          subtitle: "릴리트, 고행뚫, 문양업 상담 가능",
+          badge: "LEVEL",
+          items: [
+            ["고행8 릴리트 1회", "4,000원"],
+            ["고행12뚫", "4,000원"],
+            ["70렙 만렙 버스", "6,000원"],
+            ["70렙+정복자100", "25,000원"],
+            ["나락 100단 문양업 1시간", "9,000원"]
+          ]
+        },
+        {
+          category: "대행",
+          title: "1티어 풀세팅",
+          subtitle: "모든 클래스 빌드 상담",
+          badge: "BUILD",
+          items: [
+            ["가성비세팅", "100,000원"],
+            ["중급세팅", "200,000원"],
+            ["엔드세팅", "350,000원"]
+          ],
+          notes: ["빌드별 세부 옵션은 상담으로 확정합니다."]
+        }
+      ];
+
+      const defaultPriceSections = cloneSections(priceSections);
+      const rawPriceText = (document.querySelector("#rawPriceText")?.textContent || "").trim();
+      let currentPriceText = rawPriceText;
+      let priceNoticeItems = [];
+      applyPriceText(rawPriceText);
+
+      const cart = new Map();
+      const priceGrid = document.querySelector("#priceGrid");
+      const priceNotice = document.querySelector("#priceNotice");
+      const filters = document.querySelector("#filters");
+      const searchInput = document.querySelector("#searchInput");
+      const cartTitle = document.querySelector("#cartTitle");
+      const cartSubtitle = document.querySelector("#cartSubtitle");
+      const cartLines = document.querySelector("#cartLines");
+      const cartTotal = document.querySelector("#cartTotal");
+      const drawer = document.querySelector("#cartDrawer");
+      const backdrop = document.querySelector("#backdrop");
+      const toast = document.querySelector("#toast");
+      const adminModal = document.querySelector("#adminModal");
+      const passwordPanel = document.querySelector("#passwordPanel");
+      const adminPanel = document.querySelector("#adminPanel");
+      const passwordInput = document.querySelector("#passwordInput");
+      const loginHint = document.querySelector("#loginHint");
+      const priceEditor = document.querySelector("#priceEditor");
+
+      let activeCategory = "전체";
+      let serverSession = false;
+
+      init();
+
+      async function init() {
+        document.querySelector("#todayLabel").textContent = new Intl.DateTimeFormat("ko-KR", {
+          timeZone: "Asia/Seoul",
+          month: "long",
+          day: "numeric",
+          weekday: "long"
+        }).format(new Date());
+
+        document.querySelector("#activeChats").textContent = String(3 + ((new Date().getMinutes() + 2) % 5));
+        document.querySelector("#todayViews").textContent = String(120 + ((new Date().getHours() * 23 + new Date().getMinutes()) % 240));
+
+        await loadSavedPriceText();
+        renderFilters();
+        renderPriceNotice();
+        renderPrices();
+        renderCart();
+
+        searchInput.addEventListener("input", renderPrices);
+        document.querySelectorAll("[data-open-cart]").forEach((button) => button.addEventListener("click", openDrawer));
+        document.querySelectorAll("[data-open-channel]").forEach((button) => button.addEventListener("click", openChannelTalk));
+        document.querySelectorAll("[data-copy-open]").forEach((button) => button.addEventListener("click", copyAndOpenChat));
+        document.querySelector("#closeDrawer").addEventListener("click", closeDrawer);
+        document.querySelector("#clearCart").addEventListener("click", clearCart);
+        backdrop.addEventListener("click", closeDrawer);
+        bindAdminControls();
+      }
+
+      async function loadSavedPriceText() {
+        try {
+          const response = await fetch("api/price", { cache: "no-store" });
+          if (!response.ok) return;
+          const data = await response.json();
+          if (data.text) applyPriceText(data.text);
+        } catch {}
+      }
+
+      function applyPriceText(text) {
+        const normalizedText = String(text || "").trim();
+        const sections = parseRawPriceText(normalizedText);
+        priceSections.splice(0, priceSections.length, ...(sections.length ? sections : cloneSections(defaultPriceSections)));
+        priceNoticeItems = parseRawNoticeText(normalizedText);
+        currentPriceText = normalizedText || rawPriceText;
+      }
+
+      function refreshPriceView() {
+        if (!priceSections.some((section) => section.category === activeCategory) && activeCategory !== "전체") {
+          activeCategory = "전체";
+        }
+        renderFilters();
+        renderPriceNotice();
+        renderPrices();
+        renderCart();
+      }
+
+      function bindAdminControls() {
+        const adminGesture = document.querySelector(".mark");
+        let holdTimer = null;
+
+        function clearHold() {
+          if (!holdTimer) return;
+          clearTimeout(holdTimer);
+          holdTimer = null;
+        }
+
+        adminGesture.addEventListener("pointerdown", (event) => {
+          if (event.button && event.button !== 0) return;
+          clearHold();
+          holdTimer = setTimeout(() => {
+            holdTimer = null;
+            openAdminModal();
+          }, 1400);
+        });
+        adminGesture.addEventListener("pointerup", clearHold);
+        adminGesture.addEventListener("pointerleave", clearHold);
+        adminGesture.addEventListener("pointercancel", clearHold);
+        adminGesture.addEventListener("contextmenu", (event) => event.preventDefault());
+
+        document.addEventListener("keydown", (event) => {
+          if (event.ctrlKey && event.altKey && event.key.toLowerCase() === "a") {
+            event.preventDefault();
+            openAdminModal();
+          }
+        });
+
+        document.querySelector("#loginButton").addEventListener("click", unlockAdmin);
+        passwordInput.addEventListener("keydown", (event) => {
+          if (event.key === "Enter") unlockAdmin();
+        });
+        document.querySelector("#closeAdminButton").addEventListener("click", closeAdminModal);
+        document.querySelector("#closeEditorButton").addEventListener("click", closeAdminModal);
+        adminModal.addEventListener("click", (event) => {
+          if (event.target === adminModal) closeAdminModal();
+        });
+
+        document.querySelector("#previewButton").addEventListener("click", () => {
+          applyPriceText(priceEditor.value);
+          refreshPriceView();
+        });
+        document.querySelector("#savePriceButton").addEventListener("click", savePriceText);
+        document.querySelector("#copyPriceButton").addEventListener("click", async () => {
+          await copyText(priceEditor.value);
+          showToast("가격표 원문을 복사했습니다.");
+        });
+        document.querySelector("#resetPriceButton").addEventListener("click", () => {
+          priceEditor.value = rawPriceText;
+          applyPriceText(rawPriceText);
+          refreshPriceView();
+        });
+      }
+
+      function openAdminModal() {
+        adminModal.classList.add("open");
+        passwordPanel.style.display = "block";
+        adminPanel.classList.remove("open");
+        loginHint.textContent = "";
+        passwordInput.value = "";
+        setTimeout(() => passwordInput.focus(), 50);
+      }
+
+      function closeAdminModal() {
+        adminModal.classList.remove("open");
+      }
+
+      async function unlockAdmin() {
+        loginHint.textContent = "";
+        serverSession = false;
+
+        try {
+          const response = await fetch("api/login", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json"
+            },
+            body: JSON.stringify({ password: passwordInput.value })
+          });
+
+          if (!response.ok) {
+            loginHint.textContent = "비밀번호가 다릅니다.";
+            return;
+          }
+
+          serverSession = true;
+          passwordPanel.style.display = "none";
+          adminPanel.classList.add("open");
+          priceEditor.value = currentPriceText || rawPriceText;
+        } catch {
+          loginHint.textContent = "관리자 저장 기능은 Cloudflare 배포 후 사용할 수 있습니다.";
+        }
+      }
+
+      async function savePriceText() {
+        if (!serverSession) {
+          showToast("로그인이 필요합니다.");
+          return;
+        }
+
+        const text = priceEditor.value;
+        try {
+          const response = await fetch("api/price", {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json"
+            },
+            body: JSON.stringify({ text })
+          });
+
+          if (!response.ok) throw new Error("save failed");
+          applyPriceText(text);
+          refreshPriceView();
+          showToast("가격표를 저장했습니다.");
+        } catch {
+          showToast("저장에 실패했습니다.");
+        }
+      }
+
+      function renderFilters() {
+        const categories = ["전체", ...new Set(priceSections.map((section) => section.category))];
+        filters.innerHTML = categories
+          .map(
+            (category) =>
+              `<button class="chip-button ${category === activeCategory ? "active" : ""}" type="button" data-category="${escapeHtml(category)}">${escapeHtml(category)}</button>`
+          )
+          .join("");
+
+        filters.querySelectorAll("button").forEach((button) => {
+          button.addEventListener("click", () => {
+            activeCategory = button.dataset.category;
+            renderFilters();
+            renderPrices();
+          });
+        });
+      }
+
+      function renderPriceNotice() {
+        if (!priceNoticeItems.length) {
+          priceNotice.innerHTML = "";
+          return;
+        }
+
+        priceNotice.innerHTML = priceNoticeItems
+          .map(
+            (item) => `
+              <article class="notice-card">
+                <h2>${escapeHtml(item.title)}</h2>
+                ${item.notes.map((note) => `<p>${escapeHtml(note)}</p>`).join("")}
+              </article>
+            `
+          )
+          .join("");
+      }
+
+      function renderPrices() {
+        const query = searchInput.value.trim().toLowerCase();
+        const sections = priceSections.filter((section) => {
+          const categoryMatch = activeCategory === "전체" || section.category === activeCategory;
+          const haystack = `${section.title} ${section.subtitle} ${section.items.flat().join(" ")}`.toLowerCase();
+          return categoryMatch && (!query || haystack.includes(query));
+        });
+
+        priceGrid.innerHTML = sections
+          .map(
+            (section) => `
+              <article class="price-card">
+                <div class="price-head">
+                  <div class="price-titleline">
+                    <h2>${escapeHtml(section.title)}</h2>
+                    ${section.subtitle ? `<p>${escapeHtml(section.subtitle)}</p>` : "<p></p>"}
+                  </div>
+                </div>
+                <div class="items">
+                  ${section.items
+                    .map(([label, price]) => {
+                      const id = makeId(section.title, label, price);
+                      return `
+                        <button class="item ${cart.has(id) ? "selected" : ""}" type="button" data-id="${escapeHtml(id)}" data-title="${escapeHtml(section.title)}" data-label="${escapeHtml(label)}" data-price="${escapeHtml(price)}">
+                          <span class="item-label">${escapeHtml(label)}</span>
+                          <span class="item-price">${escapeHtml(price)}</span>
+                        </button>
+                      `;
+                    })
+                    .join("")}
+                  ${(section.notes || []).map((note) => `<div class="note-row">${escapeHtml(note)}</div>`).join("")}
+                </div>
+              </article>
+            `
+          )
+          .join("");
+
+        priceGrid.querySelectorAll(".item").forEach((button) => {
+          button.addEventListener("click", () => addToCart(button));
+        });
+      }
+
+      function addToCart(button) {
+        const id = button.dataset.id;
+        const current = cart.get(id);
+        if (current) {
+          cart.delete(id);
+        } else {
+          cart.set(id, {
+            id,
+            title: button.dataset.title,
+            label: button.dataset.label,
+            price: button.dataset.price,
+            priceNumber: toNumber(button.dataset.price),
+            qty: 1
+          });
+        }
+        renderPrices();
+        renderCart();
+      }
+
+      function renderCart() {
+        const items = [...cart.values()];
+        const count = items.reduce((sum, item) => sum + item.qty, 0);
+        const total = items.reduce((sum, item) => sum + item.priceNumber * item.qty, 0);
+
+        cartTitle.textContent = count ? `담긴 상품 ${count}개 · ${formatWon(total)}` : "장바구니가 비어있어요";
+        cartSubtitle.textContent = count ? items.map((item) => `${item.title} ${item.label}`).join(" · ") : "상품을 누르면 상담 내용이 자동으로 준비됩니다.";
+        cartTotal.textContent = formatWon(total);
+
+        if (!items.length) {
+          cartLines.innerHTML = `<div class="cart-empty">아직 담긴 상품이 없어요.<br />가격표에서 원하는 항목을 눌러주세요.</div>`;
+          return;
+        }
+
+        cartLines.innerHTML = items
+          .map(
+            (item) => `
+              <div class="cart-line">
+                <div>
+                  <strong>${escapeHtml(item.title)} / ${escapeHtml(item.label)}</strong>
+                  <span>${escapeHtml(item.price)} · 소계 ${formatWon(item.priceNumber * item.qty)}</span>
+                </div>
+                <div class="qty" aria-label="수량 조절">
+                  <button type="button" data-qty="minus" data-id="${escapeHtml(item.id)}">−</button>
+                  <b>${item.qty}</b>
+                  <button type="button" data-qty="plus" data-id="${escapeHtml(item.id)}">+</button>
+                </div>
+              </div>
+            `
+          )
+          .join("");
+
+        cartLines.querySelectorAll("[data-qty]").forEach((button) => {
+          button.addEventListener("click", () => changeQty(button.dataset.id, button.dataset.qty === "plus" ? 1 : -1));
+        });
+      }
+
+      function changeQty(id, delta) {
+        const item = cart.get(id);
+        if (!item) return;
+        item.qty += delta;
+        if (item.qty <= 0) cart.delete(id);
+        renderPrices();
+        renderCart();
+      }
+
+      function clearCart() {
+        cart.clear();
+        renderPrices();
+        renderCart();
+      }
+
+      async function copyAndOpenChat() {
+        const text = buildOrderText();
+        const copied = await copyText(text);
+        showToast(
+          copied
+            ? cart.size
+              ? "상담 내용이 준비됐어요. 채팅창에 붙여넣어 전송해주세요."
+              : "상담 양식이 준비됐어요."
+            : "브라우저가 자동 준비를 막았어요. 장바구니 내용을 직접 선택해 복사해주세요."
+        );
+        if (window.ChannelIO) {
+          window.ChannelIO("showMessenger");
+        } else {
+          openDrawer();
+        }
+      }
+
+      function buildOrderText() {
+        const items = [...cart.values()];
+        const total = items.reduce((sum, item) => sum + item.priceNumber * item.qty, 0);
+        const battleTag = document.querySelector("#battleTag").value.trim();
+        const depositor = document.querySelector("#depositor").value.trim();
+        const memo = document.querySelector("#memo").value.trim();
+
+        const lines = ["[골드문 주문 요청]", ""];
+
+        if (items.length) {
+          lines.push("상품:");
+          items.forEach((item) => {
+            const subtotal = formatWon(item.priceNumber * item.qty);
+            lines.push(`- ${item.title} / ${item.label} / ${item.price} x ${item.qty} = ${subtotal}`);
+          });
+          lines.push("", `총 금액: ${formatWon(total)}`, "");
+        } else {
+          lines.push("상품:", "- 상담 후 작성", "");
+        }
+
+        lines.push("[구매자 정보]");
+        lines.push(`배틀태그: ${battleTag}`);
+        lines.push(`입금자명: ${depositor}`);
+        lines.push(`요청사항: ${memo}`);
+
+        return lines.join("\n");
+      }
+
+      async function copyText(text) {
+        try {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+            return true;
+          }
+        } catch {}
+
+        try {
+          const textarea = document.createElement("textarea");
+          textarea.value = text;
+          textarea.setAttribute("readonly", "");
+          textarea.style.position = "fixed";
+          textarea.style.left = "-9999px";
+          document.body.appendChild(textarea);
+          textarea.select();
+          const copied = document.execCommand("copy");
+          textarea.remove();
+          return copied;
+        } catch {
+          return false;
+        }
+      }
+
+      function openDrawer() {
+        drawer.classList.add("open");
+        backdrop.classList.add("open");
+      }
+
+      function closeDrawer() {
+        drawer.classList.remove("open");
+        backdrop.classList.remove("open");
+      }
+
+      function openChannelTalk() {
+        if (window.ChannelIO) {
+          window.ChannelIO("showMessenger");
+          return;
+        }
+
+        showToast("채널톡 플러그인 키를 넣으면 이 버튼으로 상담창이 열립니다.");
+      }
+
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add("show");
+        setTimeout(() => toast.classList.remove("show"), 2200);
+      }
+
+      function parseRawPriceText(text) {
+        const sections = [];
+        let current = null;
+
+        const lines = String(text)
+          .replace(/\r/g, "")
+          .split("\n")
+          .map((line) => line.trim())
+          .filter(Boolean);
+
+        const hasSeparator = lines.some(isSeparatorLine);
+        let priceStarted = !hasSeparator;
+
+        for (const line of lines) {
+          if (isSeparatorLine(line)) {
+            priceStarted = true;
+            commitSection();
+            continue;
+          }
+
+          if (!priceStarted) continue;
+
+          const row = parsePriceLine(line);
+          if (row) {
+            ensureSection("기타 상품");
+            current.items.push(row);
+            continue;
+          }
+
+          if (isSectionTitle(line)) {
+            const title = cleanTitle(line);
+            if (!title) continue;
+
+            if (!current) {
+              current = createSection(title);
+              continue;
+            }
+
+            if (!current.items.length && !current.notes.length && !current.subtitle) {
+              const previousTitle = current.title;
+              current = createSection(title);
+              current.subtitle = previousTitle;
+              continue;
+            }
+
+            commitSection();
+            current = createSection(title);
+            continue;
+          }
+
+          ensureSection("안내");
+          addSectionNote(line);
+        }
+
+        commitSection();
+        return sections;
+
+        function ensureSection(title) {
+          if (!current) current = createSection(title);
+        }
+
+        function addSectionNote(line) {
+          const note = cleanNote(line);
+          if (!note) return;
+          if (!current.subtitle) current.subtitle = note;
+          else current.notes.push(note);
+        }
+
+        function commitSection() {
+          if (!current) return;
+          if (current.items.length || current.subtitle || current.notes.length) {
+            sections.push(current);
+          }
+          current = null;
+        }
+      }
+
+      function parseRawNoticeText(text) {
+        const lines = String(text)
+          .replace(/\r/g, "")
+          .split("\n")
+          .map((line) => line.trim())
+          .filter(Boolean);
+
+        const noticeLines = [];
+        for (const line of lines) {
+          if (isSeparatorLine(line)) break;
+          noticeLines.push(line);
+        }
+
+        const notices = [];
+        let current = null;
+
+        for (const line of noticeLines) {
+          if (/^★/.test(line)) {
+            commitNotice();
+            current = {
+              title: cleanTitle(line),
+              notes: []
+            };
+            continue;
+          }
+
+          if (!current) {
+            current = {
+              title: "안내",
+              notes: []
+            };
+          }
+          current.notes.push(cleanTitle(line));
+        }
+
+        commitNotice();
+        return notices;
+
+        function commitNotice() {
+          if (!current || !current.title) return;
+          if (!current.notes.length && /개별\s*문의/.test(current.title)) {
+            current.notes.push("가격표에 없는 품목은 채널톡으로 문의해주세요.");
+          }
+          notices.push(current);
+          current = null;
+        }
+      }
+
+      function parsePriceLine(line) {
+        const clean = cleanNote(line);
+        if (!/\d[\d,]*\s*원/.test(clean)) return null;
+
+        const equalIndex = clean.indexOf("=");
+        if (equalIndex > -1) {
+          return [clean.slice(0, equalIndex).trim(), clean.slice(equalIndex + 1).trim()];
+        }
+
+        const dashMatch = clean.match(/^(.+?)\s*[-–—]\s*(.+)$/);
+        if (dashMatch) {
+          return [dashMatch[1].trim(), dashMatch[2].trim()];
+        }
+
+        return [clean.replace(/\d[\d,]*\s*원.*$/, "").trim() || "상품", clean.match(/\d[\d,]*\s*원.*$/)?.[0] || "상담"];
+      }
+
+      function isSectionTitle(line) {
+        const clean = line.trim();
+        if (/^☆/.test(clean)) return false;
+        if (/개별\s*문의/.test(clean)) return false;
+        return /^▶/.test(clean) || /^★/.test(clean);
+      }
+
+      function isSeparatorLine(line) {
+        return /^[ㅡ\-_=＊*]{8,}$/.test(line.replace(/\s/g, ""));
+      }
+
+      function cleanTitle(line) {
+        return cleanNote(line)
+          .replace(/[★▶◀]/g, "")
+          .replace(/^[-–—]+/, "")
+          .trim();
+      }
+
+      function cleanNote(line) {
+        return String(line)
+          .replace(/^[-–—]+\s*/, "")
+          .replace(/^☆[-–—]*/, "")
+          .trim();
+      }
+
+      function createSection(title) {
+        const category = inferCategory(title);
+        return {
+          category,
+          title,
+          subtitle: "",
+          badge: inferBadge(category, title),
+          items: [],
+          notes: []
+        };
+      }
+
+      function inferCategory(title) {
+        if (/골드|금화/.test(title)) return "재화";
+        if (/영혼|옵두|벨리알|껍데기|강철|극피|열쇠/.test(title)) return "재료";
+        if (/보석|호라드림|분광경|십자가/.test(title)) return "보석";
+        if (/룬|부적|문장|장비/.test(title)) return "세트";
+        if (/버스|대행|레벨|메피스토|공물/.test(title)) return "버스";
+        return "추천";
+      }
+
+      function inferBadge(category, title) {
+        if (/신화|공물/.test(title)) return "BEST";
+        if (/골드|금화/.test(title)) return "GOLD";
+        if (/보석|분광경|십자가/.test(title)) return "GEM";
+        if (/룬|부적|문장|장비/.test(title)) return "SET";
+        if (/버스|대행|레벨|메피스토/.test(title)) return "RUN";
+        if (category === "재료") return "MAT";
+        return "ITEM";
+      }
+
+      function makeId(title, label, price) {
+        return `${title}__${label}__${price}`;
+      }
+
+      function toNumber(value) {
+        return Number(String(value).replace(/[^0-9]/g, "")) || 0;
+      }
+
+      function formatWon(value) {
+        return `${Number(value || 0).toLocaleString("ko-KR")}원`;
+      }
+
+      function cloneSections(sections) {
+        return sections.map((section) => ({
+          ...section,
+          items: section.items.map((item) => [...item]),
+          notes: [...(section.notes || [])]
+        }));
+      }
+
+      function escapeHtml(value) {
+        return String(value ?? "")
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+    </script>
+  </body>
+</html>

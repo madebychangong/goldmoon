@@ -941,6 +941,33 @@
         white-space: pre;
       }
 
+      .admin-settings {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        margin-bottom: 12px;
+      }
+
+      .admin-settings label {
+        display: grid;
+        gap: 6px;
+        color: var(--text);
+        font-size: 0.86rem;
+        font-weight: 900;
+      }
+
+      .admin-settings label:first-child {
+        grid-column: 1 / -1;
+      }
+
+      .admin-help {
+        margin: -2px 0 12px;
+        color: var(--muted);
+        font-size: 0.84rem;
+        font-weight: 800;
+        line-height: 1.45;
+      }
+
       .modal-actions {
         display: flex;
         flex-wrap: wrap;
@@ -1012,6 +1039,10 @@
         }
 
         .price-notice {
+          grid-template-columns: 1fr;
+        }
+
+        .admin-settings {
           grid-template-columns: 1fr;
         }
 
@@ -1148,8 +1179,8 @@
           </div>
           <div class="brand-actions">
             <button class="btn primary" type="button" data-open-cart>장바구니 보기</button>
-            <a class="btn kakao" href="https://open.kakao.com/o/sICyD4ti" target="_blank" rel="noopener noreferrer">1:1 카톡방</a>
-            <a class="btn kakao" href="https://open.kakao.com/o/gWhrlwJg" target="_blank" rel="noopener noreferrer">단톡방</a>
+            <a id="kakaoOneLink" class="btn kakao" href="https://open.kakao.com/o/sICyD4ti" target="_blank" rel="noopener noreferrer">1:1 카톡방</a>
+            <a id="kakaoGroupLink" class="btn kakao" href="https://open.kakao.com/o/gWhrlwJg" target="_blank" rel="noopener noreferrer">단톡방</a>
             <button class="btn channel" type="button" data-open-channel>채널톡문의</button>
           </div>
         </div>
@@ -1158,8 +1189,8 @@
 
       <div class="notice" aria-label="주요 상품">
         <div class="ticker">
-          <span>GoldMoon Shop · 최저가의 기준 · 신속정확한 거래전문샵 · 골드 · 신화병기공물 · 보석 · 룬세트 · 레벨링 대행</span>
-          <span>GoldMoon Shop · 최저가의 기준 · 신속정확한 거래전문샵 · 골드 · 신화병기공물 · 보석 · 룬세트 · 레벨링 대행</span>
+          <span data-notice-line>GoldMoon Shop · 최저가의 기준 · 신속정확한 거래전문샵 · 골드 · 신화병기공물 · 보석 · 룬세트 · 레벨링 대행</span>
+          <span data-notice-line>GoldMoon Shop · 최저가의 기준 · 신속정확한 거래전문샵 · 골드 · 신화병기공물 · 보석 · 룬세트 · 레벨링 대행</span>
         </div>
       </div>
 
@@ -1234,6 +1265,21 @@
         </div>
 
         <div id="adminPanel" class="admin-panel">
+          <div class="admin-settings">
+            <label>
+              공지 문구
+              <input id="noticeEditor" type="text" autocomplete="off" />
+            </label>
+            <label>
+              1:1 카톡방 주소
+              <input id="kakaoOneEditor" type="url" autocomplete="off" />
+            </label>
+            <label>
+              단톡방 주소
+              <input id="kakaoGroupEditor" type="url" autocomplete="off" />
+            </label>
+          </div>
+          <div class="admin-help">공지와 톡방 주소도 아래 저장 버튼으로 가격표와 같이 저장됩니다.</div>
           <textarea id="priceEditor" spellcheck="false"></textarea>
           <div class="modal-actions">
             <button id="previewButton" class="modal-button" type="button">미리보기</button>
@@ -1348,7 +1394,12 @@
 
     <script>
       const CHANNEL_PLUGIN_KEY = "eb9dd75b-8906-41fa-9535-d6385372e421";
-      const KAKAO_CHAT_URL = "https://open.kakao.com/o/sICyD4ti";
+      const defaultSiteSettings = {
+        notice: "GoldMoon Shop · 최저가의 기준 · 신속정확한 거래전문샵 · 골드 · 신화병기공물 · 보석 · 룬세트 · 레벨링 대행",
+        kakaoOneUrl: "https://open.kakao.com/o/sICyD4ti",
+        kakaoGroupUrl: "https://open.kakao.com/o/gWhrlwJg"
+      };
+      let siteSettings = { ...defaultSiteSettings };
 
       if (CHANNEL_PLUGIN_KEY) {
         (function () {
@@ -1560,6 +1611,9 @@
       const passwordInput = document.querySelector("#passwordInput");
       const loginHint = document.querySelector("#loginHint");
       const priceEditor = document.querySelector("#priceEditor");
+      const noticeEditor = document.querySelector("#noticeEditor");
+      const kakaoOneEditor = document.querySelector("#kakaoOneEditor");
+      const kakaoGroupEditor = document.querySelector("#kakaoGroupEditor");
 
       let activeCategory = "전체";
       let serverSession = false;
@@ -1577,6 +1631,7 @@
         document.querySelector("#activeChats").textContent = String(3 + ((new Date().getMinutes() + 2) % 5));
         document.querySelector("#todayViews").textContent = String(120 + ((new Date().getHours() * 23 + new Date().getMinutes()) % 240));
 
+        applySiteSettings(defaultSiteSettings);
         await loadSavedPriceText();
         renderFilters();
         renderPriceNotice();
@@ -1598,8 +1653,36 @@
           const response = await fetch("api/price", { cache: "no-store" });
           if (!response.ok) return;
           const data = await response.json();
+          if (data.settings) applySiteSettings(data.settings);
           if (data.text) applyPriceText(data.text);
         } catch {}
+      }
+
+      function applySiteSettings(settings) {
+        siteSettings = {
+          ...defaultSiteSettings,
+          ...Object.fromEntries(
+            Object.entries(settings || {}).filter(([, value]) => typeof value === "string" && value.trim())
+          )
+        };
+
+        document.querySelectorAll("[data-notice-line]").forEach((line) => {
+          line.textContent = siteSettings.notice;
+        });
+        document.querySelector("#kakaoOneLink").href = siteSettings.kakaoOneUrl;
+        document.querySelector("#kakaoGroupLink").href = siteSettings.kakaoGroupUrl;
+
+        if (noticeEditor) noticeEditor.value = siteSettings.notice;
+        if (kakaoOneEditor) kakaoOneEditor.value = siteSettings.kakaoOneUrl;
+        if (kakaoGroupEditor) kakaoGroupEditor.value = siteSettings.kakaoGroupUrl;
+      }
+
+      function readSiteSettingsFromEditor() {
+        return {
+          notice: noticeEditor.value.trim(),
+          kakaoOneUrl: kakaoOneEditor.value.trim(),
+          kakaoGroupUrl: kakaoGroupEditor.value.trim()
+        };
       }
 
       function applyPriceText(text) {
@@ -1661,6 +1744,7 @@
         });
 
         document.querySelector("#previewButton").addEventListener("click", () => {
+          applySiteSettings(readSiteSettingsFromEditor());
           applyPriceText(priceEditor.value);
           refreshPriceView();
         });
@@ -1670,6 +1754,7 @@
           showToast("가격표 원문을 복사했습니다.");
         });
         document.querySelector("#resetPriceButton").addEventListener("click", () => {
+          applySiteSettings(defaultSiteSettings);
           priceEditor.value = rawPriceText;
           applyPriceText(rawPriceText);
           refreshPriceView();
@@ -1711,6 +1796,7 @@
           serverSession = true;
           passwordPanel.style.display = "none";
           adminPanel.classList.add("open");
+          applySiteSettings(siteSettings);
           priceEditor.value = currentPriceText || rawPriceText;
         } catch {
           loginHint.textContent = "관리자 저장 기능은 Cloudflare 배포 후 사용할 수 있습니다.";
@@ -1724,6 +1810,7 @@
         }
 
         const text = priceEditor.value;
+        const settings = readSiteSettingsFromEditor();
         try {
           const response = await fetch("api/price", {
             method: "PUT",
@@ -1731,13 +1818,14 @@
               "Content-Type": "application/json",
               Accept: "application/json"
             },
-            body: JSON.stringify({ text })
+            body: JSON.stringify({ text, settings })
           });
 
           if (!response.ok) throw new Error("save failed");
+          applySiteSettings(settings);
           applyPriceText(text);
           refreshPriceView();
-          showToast("가격표를 저장했습니다.");
+          showToast("가격표와 공지/톡주소를 저장했습니다.");
         } catch {
           showToast("저장에 실패했습니다.");
         }
@@ -2008,10 +2096,10 @@
 
           if (!priceStarted) continue;
 
-          const row = parsePriceLine(line);
-          if (row) {
+          const rows = parsePriceLines(line);
+          if (rows.length) {
             ensureSection("기타 상품");
-            current.items.push(row);
+            current.items.push(...rows);
             continue;
           }
 
@@ -2117,7 +2205,7 @@
 
         const equalIndex = clean.indexOf("=");
         if (equalIndex > -1) {
-          return [clean.slice(0, equalIndex).trim(), clean.slice(equalIndex + 1).trim()];
+          return [clean.slice(0, equalIndex).trim(), normalizePrice(clean.slice(equalIndex + 1).trim())];
         }
 
         const dashMatch = clean.match(/^(.+?)\s*[-–—]\s*(.+)$/);
@@ -2126,6 +2214,36 @@
         }
 
         return [clean.replace(/\d[\d,]*\s*원.*$/, "").trim() || "상품", clean.match(/\d[\d,]*\s*원.*$/)?.[0] || "상담"];
+      }
+
+      function parsePriceLines(line) {
+        const clean = cleanNote(line);
+        if (!/\d[\d,]*\s*원/.test(clean)) return [];
+
+        const equalParts = clean.split(/\s*=\s*/);
+        if (equalParts.length > 2 && /\//.test(clean)) {
+          const prefix = equalParts.shift().trim();
+          return equalParts
+            .join(" = ")
+            .split(/\s*\/\s*/)
+            .map((part) => {
+              const equalIndex = part.indexOf("=");
+              if (equalIndex < 0) return null;
+              const option = part.slice(0, equalIndex).trim();
+              const price = normalizePrice(part.slice(equalIndex + 1).trim());
+              return [`${prefix} ${option}`.trim(), price];
+            })
+            .filter(Boolean);
+        }
+
+        const row = parsePriceLine(clean);
+        return row ? [row] : [];
+      }
+
+      function normalizePrice(value) {
+        const price = String(value || "").trim();
+        if (/^\d[\d,]*$/.test(price)) return `${price}원`;
+        return price;
       }
 
       function isSectionTitle(line) {

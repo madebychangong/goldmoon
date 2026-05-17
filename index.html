@@ -15,14 +15,14 @@
         --gold: #d7a329;
         --gold-2: #b47912;
         --gold-3: #ffe091;
-        --pink: #8a173a;
+        --pink: #B82440;
         --pink-soft: #fff3f6;
         --line: rgba(19, 17, 15, 0.12);
         --line-strong: rgba(215, 163, 41, 0.5);
         --text: #17120f;
         --muted: #685f5a;
         --green: #13875f;
-        --red: #74132f;
+        --red: #B82440;
         --blue: #2563eb;
         --shadow: 0 14px 38px rgba(54, 36, 24, 0.1);
       }
@@ -39,7 +39,7 @@
         margin: 0;
         min-width: 320px;
         background:
-          radial-gradient(circle at 11% 8%, rgba(116, 19, 47, 0.12), transparent 18rem),
+          radial-gradient(circle at 11% 8%, rgba(184, 36, 64, 0.12), transparent 18rem),
           radial-gradient(circle at 86% 18%, rgba(215, 163, 41, 0.14), transparent 19rem),
           linear-gradient(180deg, #fffdfd 0%, #fff8f9 36%, #ffffff 100%);
         color: var(--text);
@@ -113,7 +113,7 @@
         right: 0;
         top: 0;
         height: 7px;
-        background: linear-gradient(90deg, #74132f, #b65a73, #f5c84e, #74132f);
+        background: linear-gradient(90deg, #B82440, #d05a6f, #f5c84e, #B82440);
       }
 
       .brand-top {
@@ -210,7 +210,7 @@
         border: 2px solid rgba(23, 18, 15, 0.72);
         border-radius: 16px;
         background: #15100d;
-        box-shadow: 5px 5px 0 rgba(116, 19, 47, 0.2);
+        box-shadow: 5px 5px 0 rgba(184, 36, 64, 0.2);
       }
 
       .brand-logo img {
@@ -278,14 +278,14 @@
       }
 
       .btn.kakao {
-        border-color: rgba(116, 19, 47, 0.52);
-        background: linear-gradient(135deg, #8a173a, #5e0f27);
+        border-color: rgba(184, 36, 64, 0.52);
+        background: linear-gradient(135deg, #B82440, #8f1932);
         color: #ffffff;
-        box-shadow: 0 12px 28px rgba(116, 19, 47, 0.2);
+        box-shadow: 0 12px 28px rgba(184, 36, 64, 0.2);
       }
 
       .btn.channel {
-        border-color: rgba(116, 19, 47, 0.34);
+        border-color: rgba(184, 36, 64, 0.34);
         background: #fff4f6;
         color: var(--red);
       }
@@ -414,7 +414,7 @@
         margin-bottom: 14px;
         padding: 12px;
         background:
-          linear-gradient(135deg, rgba(116, 19, 47, 0.08), transparent 62%),
+          linear-gradient(135deg, rgba(184, 36, 64, 0.08), transparent 62%),
           #ffffff;
       }
 
@@ -423,7 +423,7 @@
       }
 
       .notice-card {
-        border: 1px solid rgba(116, 19, 47, 0.22);
+        border: 1px solid rgba(184, 36, 64, 0.22);
         border-left: 5px solid var(--red);
         border-radius: 12px;
         padding: 14px;
@@ -478,7 +478,7 @@
       }
 
       .chip-button.active {
-        border-color: rgba(116, 19, 47, 0.55);
+        border-color: rgba(184, 36, 64, 0.55);
         background: #fff3f6;
         color: var(--red);
       }
@@ -589,7 +589,7 @@
       }
 
       .item.selected {
-        border-color: rgba(116, 19, 47, 0.68);
+        border-color: rgba(184, 36, 64, 0.68);
         background: #fff3f6;
       }
 
@@ -597,7 +597,7 @@
         min-width: 0;
         color: var(--text);
         font-size: 1rem;
-        font-weight: 800;
+        font-weight: 650;
         line-height: 1.24;
         word-break: keep-all;
         overflow-wrap: anywhere;
@@ -992,7 +992,7 @@
       }
 
       .modal-button.danger {
-        border-color: rgba(116, 19, 47, 0.38);
+        border-color: rgba(184, 36, 64, 0.38);
         background: #fff3f6;
         color: var(--red);
       }
@@ -1120,8 +1120,8 @@
         }
 
         .item {
-          grid-template-columns: 1fr;
-          gap: 6px;
+          grid-template-columns: minmax(0, 1fr) auto;
+          gap: 8px;
           min-height: 46px;
           padding: 8px 8px 8px 10px;
         }
@@ -1131,13 +1131,14 @@
         }
 
         .item-price {
-          justify-self: start;
+          justify-self: end;
           justify-content: center;
           min-width: 88px;
           font-size: 0.92rem;
           width: fit-content;
-          white-space: normal;
-          text-align: left;
+          max-width: 100%;
+          white-space: nowrap;
+          text-align: center;
           line-height: 1.22;
         }
 
@@ -1704,34 +1705,8 @@
       }
 
       function bindAdminControls() {
-        const adminGesture = document.querySelector(".mark");
-        let holdTimer = null;
-
-        function clearHold() {
-          if (!holdTimer) return;
-          clearTimeout(holdTimer);
-          holdTimer = null;
-        }
-
-        adminGesture.addEventListener("pointerdown", (event) => {
-          if (event.button && event.button !== 0) return;
-          clearHold();
-          holdTimer = setTimeout(() => {
-            holdTimer = null;
-            openAdminModal();
-          }, 1400);
-        });
-        adminGesture.addEventListener("pointerup", clearHold);
-        adminGesture.addEventListener("pointerleave", clearHold);
-        adminGesture.addEventListener("pointercancel", clearHold);
-        adminGesture.addEventListener("contextmenu", (event) => event.preventDefault());
-
-        document.addEventListener("keydown", (event) => {
-          if (event.ctrlKey && event.altKey && event.key.toLowerCase() === "a") {
-            event.preventDefault();
-            openAdminModal();
-          }
-        });
+        const params = new URLSearchParams(window.location.search);
+        if (params.get("admin") === "1") openAdminModal();
 
         document.querySelector("#loginButton").addEventListener("click", unlockAdmin);
         passwordInput.addEventListener("keydown", (event) => {
@@ -1799,7 +1774,7 @@
           applySiteSettings(siteSettings);
           priceEditor.value = currentPriceText || rawPriceText;
         } catch {
-          loginHint.textContent = "관리자 저장 기능은 Cloudflare 배포 후 사용할 수 있습니다.";
+          loginHint.textContent = "로그인할 수 없습니다.";
         }
       }
 

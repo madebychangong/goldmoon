@@ -8,21 +8,21 @@
     <style>
       :root {
         color-scheme: light;
-        --bg: #fff8f8;
+        --bg: #fff9fa;
         --panel: #ffffff;
-        --panel-2: #fff1f3;
+        --panel-2: #fff4f6;
         --paper: #ffffff;
         --gold: #d7a329;
         --gold-2: #b47912;
         --gold-3: #ffe091;
-        --pink: #ff6f85;
-        --pink-soft: #fff0f4;
+        --pink: #8a173a;
+        --pink-soft: #fff3f6;
         --line: rgba(19, 17, 15, 0.12);
         --line-strong: rgba(215, 163, 41, 0.5);
         --text: #17120f;
         --muted: #685f5a;
         --green: #13875f;
-        --red: #ff475d;
+        --red: #74132f;
         --blue: #2563eb;
         --shadow: 0 14px 38px rgba(54, 36, 24, 0.1);
       }
@@ -39,9 +39,9 @@
         margin: 0;
         min-width: 320px;
         background:
-          radial-gradient(circle at 11% 8%, rgba(255, 71, 93, 0.13), transparent 18rem),
+          radial-gradient(circle at 11% 8%, rgba(116, 19, 47, 0.12), transparent 18rem),
           radial-gradient(circle at 86% 18%, rgba(215, 163, 41, 0.14), transparent 19rem),
-          linear-gradient(180deg, #fffdfd 0%, #fff7f8 36%, #ffffff 100%);
+          linear-gradient(180deg, #fffdfd 0%, #fff8f9 36%, #ffffff 100%);
         color: var(--text);
         font-family:
           Pretendard,
@@ -113,7 +113,7 @@
         right: 0;
         top: 0;
         height: 7px;
-        background: linear-gradient(90deg, #ff475d, #ffb0bd, #f5c84e, #ff475d);
+        background: linear-gradient(90deg, #74132f, #b65a73, #f5c84e, #74132f);
       }
 
       .brand-top {
@@ -210,7 +210,7 @@
         border: 2px solid rgba(23, 18, 15, 0.72);
         border-radius: 16px;
         background: #15100d;
-        box-shadow: 5px 5px 0 rgba(255, 71, 93, 0.18);
+        box-shadow: 5px 5px 0 rgba(116, 19, 47, 0.2);
       }
 
       .brand-logo img {
@@ -278,15 +278,15 @@
       }
 
       .btn.kakao {
-        border-color: rgba(255, 71, 93, 0.48);
-        background: linear-gradient(135deg, #ff6f85, #ff3f5b);
+        border-color: rgba(116, 19, 47, 0.52);
+        background: linear-gradient(135deg, #8a173a, #5e0f27);
         color: #ffffff;
-        box-shadow: 0 12px 28px rgba(255, 71, 93, 0.2);
+        box-shadow: 0 12px 28px rgba(116, 19, 47, 0.2);
       }
 
       .btn.channel {
-        border-color: rgba(255, 71, 93, 0.34);
-        background: #fff7f8;
+        border-color: rgba(116, 19, 47, 0.34);
+        background: #fff4f6;
         color: var(--red);
       }
 
@@ -353,7 +353,7 @@
         border-radius: 14px;
         margin-bottom: 14px;
         background:
-          linear-gradient(90deg, #fff5f8 0%, #ffffff 28%, #fff3bf 52%, #ffffff 74%, #ffe8ee 100%);
+          linear-gradient(90deg, #fff2f6 0%, #ffffff 28%, #fff3bf 52%, #ffffff 74%, #f7dfe6 100%);
         box-shadow: 0 8px 22px rgba(54, 36, 24, 0.08);
       }
 
@@ -394,6 +394,18 @@
         padding: 12px;
       }
 
+      .quick-help {
+        margin: -4px 0 14px;
+        border: 1px solid rgba(215, 163, 41, 0.42);
+        border-radius: 999px;
+        padding: 9px 13px;
+        background: linear-gradient(135deg, #fff8e5, #fff4f6);
+        color: #3b2a13;
+        font-size: 0.92rem;
+        font-weight: 900;
+        text-align: center;
+      }
+
       .price-notice {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -402,7 +414,7 @@
         margin-bottom: 14px;
         padding: 12px;
         background:
-          linear-gradient(135deg, rgba(255, 71, 93, 0.08), transparent 62%),
+          linear-gradient(135deg, rgba(116, 19, 47, 0.08), transparent 62%),
           #ffffff;
       }
 
@@ -411,7 +423,7 @@
       }
 
       .notice-card {
-        border: 1px solid rgba(255, 71, 93, 0.22);
+        border: 1px solid rgba(116, 19, 47, 0.22);
         border-left: 5px solid var(--red);
         border-radius: 12px;
         padding: 14px;
@@ -466,8 +478,8 @@
       }
 
       .chip-button.active {
-        border-color: rgba(255, 71, 93, 0.55);
-        background: #fff0f3;
+        border-color: rgba(116, 19, 47, 0.55);
+        background: #fff3f6;
         color: var(--red);
       }
 
@@ -488,7 +500,7 @@
         border-bottom: 1px solid rgba(19, 17, 15, 0.12);
         padding: 12px;
         background:
-          linear-gradient(135deg, #fff0f3 0%, #ffffff 66%, #fff8e5 100%),
+          linear-gradient(135deg, #fff3f6 0%, #ffffff 66%, #fff8e5 100%),
           #ffffff;
       }
 
@@ -505,10 +517,20 @@
         margin: 0;
         color: var(--text);
         font-size: clamp(1.02rem, 2vw, 1.18rem);
+        font-weight: 850;
         line-height: 1.25;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+      }
+
+      .price-head h2::before {
+        content: "✦";
+        display: inline-block;
+        margin-right: 7px;
+        color: var(--gold-2);
+        font-size: 0.88em;
+        line-height: 1;
       }
 
       .price-head p {
@@ -567,16 +589,18 @@
       }
 
       .item.selected {
-        border-color: rgba(255, 71, 93, 0.68);
-        background: #fff0f3;
+        border-color: rgba(116, 19, 47, 0.68);
+        background: #fff3f6;
       }
 
       .item-label {
         min-width: 0;
         color: var(--text);
         font-size: 1rem;
-        font-weight: 900;
+        font-weight: 800;
         line-height: 1.24;
+        word-break: keep-all;
+        overflow-wrap: anywhere;
       }
 
       .item-price {
@@ -592,6 +616,7 @@
         font-size: 0.94rem;
         font-weight: 1000;
         white-space: nowrap;
+        max-width: 100%;
       }
 
       .note-row {
@@ -940,8 +965,8 @@
       }
 
       .modal-button.danger {
-        border-color: rgba(255, 71, 93, 0.38);
-        background: #fff0f3;
+        border-color: rgba(116, 19, 47, 0.38);
+        background: #fff3f6;
         color: var(--red);
       }
 
@@ -991,7 +1016,7 @@
         }
 
         .price-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
+          grid-template-columns: 1fr;
         }
       }
 
@@ -1017,6 +1042,17 @@
           border-radius: 13px;
         }
 
+        h1 {
+          font-size: clamp(2rem, 11.2vw, 2.85rem);
+          line-height: 1;
+        }
+
+        .brand-copy {
+          margin-top: 6px;
+          font-size: 0.88rem;
+          line-height: 1.38;
+        }
+
         .brand-actions {
           grid-column: 1;
           grid-row: auto;
@@ -1024,7 +1060,7 @@
         }
 
         .brand-actions .btn {
-          flex: 1 1 30%;
+          flex: 1 1 42%;
           min-width: 0;
           padding: 9px 8px;
           font-size: 0.92rem;
@@ -1053,7 +1089,8 @@
         }
 
         .item {
-          grid-template-columns: minmax(0, 1fr) auto;
+          grid-template-columns: 1fr;
+          gap: 6px;
           min-height: 46px;
           padding: 8px 8px 8px 10px;
         }
@@ -1063,10 +1100,14 @@
         }
 
         .item-price {
+          justify-self: start;
           justify-content: center;
           min-width: 88px;
           font-size: 0.92rem;
           width: fit-content;
+          white-space: normal;
+          text-align: left;
+          line-height: 1.22;
         }
 
         .cart-bar {
@@ -1107,7 +1148,8 @@
           </div>
           <div class="brand-actions">
             <button class="btn primary" type="button" data-open-cart>장바구니 보기</button>
-            <a class="btn kakao" href="https://open.kakao.com/o/sICyD4ti" target="_blank" rel="noopener noreferrer">카톡문의</a>
+            <a class="btn kakao" href="https://open.kakao.com/o/sICyD4ti" target="_blank" rel="noopener noreferrer">1:1 카톡방</a>
+            <a class="btn kakao" href="https://open.kakao.com/o/gWhrlwJg" target="_blank" rel="noopener noreferrer">단톡방</a>
             <button class="btn channel" type="button" data-open-channel>채널톡문의</button>
           </div>
         </div>
@@ -1125,6 +1167,7 @@
         <input id="searchInput" class="search" type="search" placeholder="상품명이나 수량으로 검색" />
         <div id="filters" class="filters"></div>
       </section>
+      <p class="quick-help">품목을 누르면 주문서에 자동입력됩니다!</p>
 
       <section id="priceNotice" class="price-notice" aria-label="가격표 안내"></section>
 
@@ -1442,7 +1485,7 @@
           ]
         },
         {
-          category: "세트",
+          category: "룬세트",
           title: "각종 룬세트",
           subtitle: "샤코/별반/한아비/셀리그/영벌/수의 등 섞어 가능",
           badge: "SET",
@@ -2126,7 +2169,7 @@
         if (/골드|금화/.test(title)) return "재화";
         if (/영혼|옵두|벨리알|껍데기|강철|극피|열쇠/.test(title)) return "재료";
         if (/보석|호라드림|분광경|십자가/.test(title)) return "보석";
-        if (/룬|부적|문장|장비/.test(title)) return "세트";
+        if (/룬|부적|문장|장비/.test(title)) return "룬세트";
         if (/버스|대행|레벨|메피스토|공물/.test(title)) return "버스";
         return "추천";
       }

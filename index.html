@@ -15,14 +15,14 @@
         --gold: #d7a329;
         --gold-2: #b47912;
         --gold-3: #ffe091;
-        --pink: #B82440;
+        --pink: #A2233A;
         --pink-soft: #fff3f6;
         --line: rgba(19, 17, 15, 0.12);
         --line-strong: rgba(215, 163, 41, 0.5);
         --text: #17120f;
         --muted: #685f5a;
         --green: #13875f;
-        --red: #B82440;
+        --red: #A2233A;
         --blue: #2563eb;
         --shadow: 0 14px 38px rgba(54, 36, 24, 0.1);
       }
@@ -113,7 +113,7 @@
         right: 0;
         top: 0;
         height: 7px;
-        background: linear-gradient(90deg, #B82440, #d05a6f, #f5c84e, #B82440);
+        background: linear-gradient(90deg, #A2233A, #d05a6f, #f5c84e, #A2233A);
       }
 
       .brand-top {
@@ -279,7 +279,7 @@
 
       .btn.kakao {
         border-color: rgba(184, 36, 64, 0.52);
-        background: linear-gradient(135deg, #B82440, #8f1932);
+        background: linear-gradient(135deg, #A2233A, #8f1932);
         color: #ffffff;
         box-shadow: 0 12px 28px rgba(184, 36, 64, 0.2);
       }
@@ -1022,6 +1022,43 @@
           grid-template-columns: 1fr;
         }
 
+        .brand {
+          grid-template-columns: 1fr;
+          align-items: start;
+        }
+
+        .brand-title {
+          grid-template-columns: 72px minmax(0, 1fr);
+          width: 100%;
+        }
+
+        .brand-logo {
+          width: 72px;
+        }
+
+        h1 {
+          font-size: clamp(2.15rem, 7vw, 3.15rem);
+          line-height: 1;
+        }
+
+        .brand-copy {
+          max-width: none;
+          margin-top: 5px;
+          word-break: keep-all;
+          overflow-wrap: normal;
+        }
+
+        .brand-actions {
+          grid-column: 1;
+          grid-row: auto;
+          width: 100%;
+          justify-content: stretch;
+        }
+
+        .brand-actions .btn {
+          flex: 1 1 9.5rem;
+        }
+
         .stats {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
@@ -1057,24 +1094,23 @@
         }
 
         .brand {
-          grid-template-columns: 1fr;
           gap: 8px;
           padding: 14px;
         }
 
         .brand-title {
-          grid-template-columns: 58px minmax(0, 1fr);
-          gap: 10px;
+          grid-template-columns: 68px minmax(0, 1fr);
+          gap: 11px;
           margin-top: 5px;
         }
 
         .brand-logo {
-          width: 58px;
+          width: 68px;
           border-radius: 13px;
         }
 
         h1 {
-          font-size: clamp(2rem, 11.2vw, 2.85rem);
+          font-size: clamp(2.05rem, 10vw, 2.75rem);
           line-height: 1;
         }
 
@@ -1085,8 +1121,6 @@
         }
 
         .brand-actions {
-          grid-column: 1;
-          grid-row: auto;
           justify-content: stretch;
         }
 

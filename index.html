@@ -1741,6 +1741,7 @@
       function bindAdminControls() {
         const params = new URLSearchParams(window.location.search);
         if (params.get("admin") === "1") openAdminModal();
+        bindAdminGesture();
 
         document.querySelector("#loginButton").addEventListener("click", unlockAdmin);
         passwordInput.addEventListener("keydown", (event) => {
@@ -1767,6 +1768,36 @@
           priceEditor.value = rawPriceText;
           applyPriceText(rawPriceText);
           refreshPriceView();
+        });
+      }
+
+      function bindAdminGesture() {
+        const triggers = document.querySelectorAll(".mark, .brand-title");
+        let holdTimer = null;
+
+        const clearHold = () => {
+          if (holdTimer) {
+            clearTimeout(holdTimer);
+            holdTimer = null;
+          }
+        };
+
+        const startHold = (event) => {
+          if (event.button && event.button !== 0) return;
+          clearHold();
+          holdTimer = setTimeout(() => {
+            holdTimer = null;
+            if (navigator.vibrate) navigator.vibrate(20);
+            openAdminModal();
+          }, 1500);
+        };
+
+        triggers.forEach((trigger) => {
+          trigger.addEventListener("pointerdown", startHold);
+          trigger.addEventListener("pointerup", clearHold);
+          trigger.addEventListener("pointerleave", clearHold);
+          trigger.addEventListener("pointercancel", clearHold);
+          trigger.addEventListener("contextmenu", (event) => event.preventDefault());
         });
       }
 
